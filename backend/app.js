@@ -3,7 +3,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-const PORT = 5000
 const mongoose = require('mongoose')
 
 var indexRouter = require('./routes/index');
@@ -16,7 +15,6 @@ async function init() {
         const options = {useNewUrlParser:true, useUnifiedTopology:true}
         await mongoose.connect('mongodb://127.0.0.1:27017/ThereseHolen', options)
         console.log("Connected to database")
-        app.listen(PORT, () => console.log(`Server is up and running on port: ${PORT}`))
     } catch (error) {
         console.error(error)
     }
@@ -32,6 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
