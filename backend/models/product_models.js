@@ -17,8 +17,16 @@ const ProductSchema = mongoose.Schema({
         type: Number,
         require: true
     },
-    category: {
+    category: {        
+        type:mongoose.Types.ObjectId,
+        ref: "category",
+        require:true
+    }/*, 
+    token: {
         type: String,
-        require: true
-    }
+        requeire: true
+    }*/
 })
+
+
+module.exports = mongoose.model('product', ProductSchema)
