@@ -31,7 +31,7 @@ router.get('/:id', async(req, res) => {
   }
 });
 
-
+/*
 // SKAPA PRODUKT // UTAN TOKEN SÅ SKALL ANROPET MISSLYCKAS = 401
 router.post('/add', async (req, res) => {
   try {
@@ -48,5 +48,22 @@ router.post('/add', async (req, res) => {
     res.status(400)
   }
 });
+*/
+
+
+// HÄMTA ALLA PRODUKTER FÖR EN SPECIFIK KATEGORI
+router.get('category/:id', async(req, res) => {
+  try {
+    const _id = req.params.id
+    const productsByCategory = await ProductModel.findAll({category:_id})
+    console.log(productsByCategory)
+    //await product.populate({path:'category', select:'name -_id'})
+    res.json(productsByCategory)
+  } catch (error){
+    console.log(error)
+    res.status(400)
+  }
+});
+
   
 module.exports = router;
