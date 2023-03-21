@@ -20,7 +20,7 @@ router.get('/', async(req, res) => {
 router.post('/', async(req, res) => {
   try {
     const _id = req.body.id
-    const user = await UserModel.find({_id})
+    const user = await UserModel.findOne({_id})
     res.json(user)
   } catch (error){
     console.log(error)
