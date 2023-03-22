@@ -22,4 +22,16 @@ router.post('/add', async (req, res) => {
     }
 });
 
+
+// HÄMTA ALLA KATEGORIER
+router.get('/', async(req, res) => {
+  try {
+    const categories = await CategoriesModel.find()
+    res.json(categories)
+  } catch (error) {
+    console.log(error)
+    res.status(400)
+  }
+});
+
 module.exports = router;
