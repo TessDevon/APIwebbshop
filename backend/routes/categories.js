@@ -13,7 +13,7 @@ router.post('/add', async (req, res) => {
         await category.save()
         res.status(201).json(category)
       } else {
-        res.status(401).end()
+        res.status(401).json({"message":"Not Authorized"}).end()
       }
     } catch (error) {
       console.log(error)

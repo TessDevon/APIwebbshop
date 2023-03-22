@@ -11,7 +11,7 @@ router.get('/all/:API_token', async(req, res) => {
             const orders = await OrderModel.find()
             res.json(orders)
         } else {
-            res.status(401).end()
+            res.status(401).json({"message":"Not Authorized"}).end()
         }
     } catch {
       console.log(error)
@@ -41,7 +41,7 @@ router.post('/user', async(req, res) => {
             const order = await OrderModel.find({user:_id})
             res.json(order)
         } else {
-            res.status(401).end()
+            res.status(401).json({"message":"Not Authorized"}).end()
         }
     } catch {
       console.log(error)

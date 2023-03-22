@@ -39,7 +39,7 @@ router.post('/add', async (req, res) => {
       await product.populate({path:'category', select:'name -_id'})
       res.status(201).json(product)
     } else {
-      res.status(401).end()
+      res.status(401).json({"message":"Not Authorized"}).end()
     }
   } catch (error) {
     console.log(error)
@@ -54,7 +54,6 @@ router.get('/category/:id', async(req, res) => {
     const _id = req.params.id
     const productsByCategory = await ProductModel.find({category:_id})
     console.log(productsByCategory)
-    //await product.populate({path:'category', select:'name -_id'})
     res.json(productsByCategory)
   } catch (error){
     console.log(error)
