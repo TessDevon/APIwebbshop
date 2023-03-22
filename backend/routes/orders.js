@@ -1,22 +1,15 @@
 var express = require('express');
 var router = express.Router();
-//const OrderModel = require('../models/order_models');
 const CryptoJS = require("crypto-js");
 const OrderModel = require('../models/order_models');
 
 
-
 // HÄMTA ALLA ORDERS, KEY MÅSTE ANGES FÖR ATT FÅ TILLGÅNG TILL ORDERS, FEL KEY // SKALL MISSLYCKAS
-
 router.get('/all/:API_token', async(req, res) => {
     try { 
         if ( req.params.API_token === process.env.TOKEN_KEY) {
-            
-            
-            const orders = await OrderModel.find()//.populate({path:'category', select:'name -_id'})
+            const orders = await OrderModel.find()
             res.json(orders)
-
-
         } else {
             res.status(401).end()
         }
@@ -28,7 +21,6 @@ router.get('/all/:API_token', async(req, res) => {
 
 
 // SKAPA ORDER FÖR EN SPECIFIK USER
-
 router.post('/add', async (req, res) => {
     try {
       const order = new OrderModel(req.body)
@@ -42,7 +34,6 @@ router.post('/add', async (req, res) => {
 
 
 // HÄMTA ORDERS FÖR EN USER // SKALL MISSLYCKAS = INGEN KEY  // SVARA MED 401 // SKALL LYCKAS = KEY
-
 router.post('/user', async(req, res) => {
     try { 
         if (req.body.token === process.env.TOKEN_KEY) {
@@ -57,6 +48,5 @@ router.post('/user', async(req, res) => {
       res.status(400)
     }
   });
-
 
 module.exports = router;

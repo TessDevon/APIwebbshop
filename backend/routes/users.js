@@ -16,6 +16,7 @@ router.get('/', async(req, res) => {
   }
 });
 
+
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
 router.post('/', async(req, res) => {
   try {
@@ -27,6 +28,7 @@ router.post('/', async(req, res) => {
     res.status(400)
   }
 });
+
 
 // SKAPA USER
 router.post('/add', async (req, res) => {
@@ -42,25 +44,19 @@ router.post('/add', async (req, res) => {
   }
 });
 
+
 // LOGGA IN USER MED EMAIL // VID FEL LÖSENORD SÅ SKALL SVARA MED 401
 router.post('/login', function(req, res, next) {
   const { email, password } = req.body;
-
   UserModel.find({email:email})
   .then (results => {
-
     for (let i = 0; i < results.length; i++) {
       const foundUser = results[i];
-      //console.log(foundUser);
       console.log(CryptoJS.SHA3(password).toString())
-      
       if(CryptoJS.SHA3(password).toString() === foundUser.password) {
         const cookieObject = {id: foundUser.id}
-        //console.log(cookieObject);
         const cookieData = JSON.stringify(cookieObject)
-        //console.log(cookieData);
         const cookiePayload = CryptoJS.AES.encrypt(cookieData, "my key").toString()
-        //console.log(cookiePayload);
         res.cookie(`Diarycookie`, cookiePayload);
         res.status(200)
         return;

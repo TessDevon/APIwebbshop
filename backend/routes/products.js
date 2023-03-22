@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-//const UserModel = require('../models/user_models');
 const ProductModel = require('../models/product_models');
-//const CategoriesModel = require('../models/categories_models');
 const CryptoJS = require("crypto-js");
 
 
@@ -63,6 +61,5 @@ router.get('/category/:id', async(req, res) => {
     res.status(400)
   }
 });
-
   
 module.exports = router;

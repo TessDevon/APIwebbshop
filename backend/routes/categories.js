@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const CategoriesModel = require('../models/categories_models')
-
 const CryptoJS = require("crypto-js");
 
 
