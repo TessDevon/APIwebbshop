@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/products');
 var categoriesRouter = require('./routes/categories');
+var ordersRouter = require('./routes/orders');
 
 var app = express();
 
@@ -28,12 +29,13 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser("secretkey"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productRouter);
 app.use('/api/categories', categoriesRouter);
+app.use('/api/orders', ordersRouter);
 
 module.exports = app;
