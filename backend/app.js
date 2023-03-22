@@ -5,6 +5,8 @@ var logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose')
 
+require("dotenv").config();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/products');
@@ -16,7 +18,7 @@ var app = express();
 async function init() {
     try{
         const options = {useNewUrlParser:true, useUnifiedTopology:true}
-        await mongoose.connect('mongodb://127.0.0.1:27017/ThereseHolen', options)
+        await mongoose.connect(process.env.MONGODB_URL, options)
         console.log("Connected to database")
     } catch (error) {
         console.error(error)
