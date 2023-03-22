@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 //const UserModel = require('../models/user_models');
 const ProductModel = require('../models/product_models');
-const CategoriesModel = require('../models/categories_models');
+//const CategoriesModel = require('../models/categories_models');
 const CryptoJS = require("crypto-js");
 
 
@@ -35,7 +35,7 @@ router.get('/:id', async(req, res) => {
 // SKAPA PRODUKT // UTAN TOKEN SÅ SKALL ANROPET MISSLYCKAS = 401
 router.post('/add', async (req, res) => {
   try {
-    if (req.body.token != "") {
+    if (req.body.token === process.env.TOKEN_KEY) {
       const product = new ProductModel(req.body)
       await product.save()
       await product.populate({path:'category', select:'name -_id'})

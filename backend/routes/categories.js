@@ -8,7 +8,7 @@ const CryptoJS = require("crypto-js");
 // SKAPA KATEGORI, KEY MÅSTE ANGES // UTAN KEY SVARA 401
 router.post('/add', async (req, res) => {
     try {
-      if (req.body.token != "") {
+      if (req.body.token === process.env.TOKEN_KEY) {
         const category = new CategoriesModel(req.body)
         console.log(category);
         await category.save()
