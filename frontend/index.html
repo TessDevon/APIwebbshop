@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="script.js" defer></script>
+    <link href="main.css" rel="stylesheet" />
+
+</head>
+
+<body> 
+    <header>
+        <h1>Tessans textil</h1>
+    </header>
+    <main>
+        <section id="user_div_section" class="user_div_section">
+            <div id="add_user_div" class="user_divs">
+                <h3>Lägg till ny användare</h3>
+                <label for="add_name">Namn:</label>
+                <input type="text" placeholder="Namn" id="add_name">
+                <label for="add_email">Epost</label>
+                <input type="email" placeholder="Epost" id="add_email">
+                <label for="add_password">Lösenord</label>
+                <input type="text" placeholder="Välj ditt lösenord" id="add_password">
+                <button type="button" id="addUserBtn">Lägg till användare</button>
+            </div>
+
+            <div id="login_user_div" class="user_divs">
+                <h3>Logga in</h3>
+                <label for="login_name">Namn:</label>
+                <input type="text" placeholder="Namn" id="login_name">
+                <label for="login_email">Epost</label>
+                <input type="email" placeholder="Epost" id="login_email">
+                <label for="login_password">Lösenord</label>
+                <input type="text" placeholder="Lösenord" id="login_password">
+                <button type="button" id="loginUserBtn">Logga in</button>
+            </div>
+        </section>
+    
+        <section id="pruducts">
+            <h2 id="product_header">Våra produkter</h2>
+            <div id="sort_div">
+                <input type="radio" name="sort" id="sort_kitchen" value="Kökstextil_ID">
+                <span>Kök</span>
+                <input type="radio" name="sort" id="sort_bathroom" value="Badrumstextil_ID">
+                <span>Badrum</span>
+                <input type="radio" name="sort" id="sort_bedroom" value="Sovrumstextil_ID">
+                <span>Sovrum</span>
+            </div>
+            <div id="product_container"></div>
+        </section>
+
+        <section id="shop_bucket_section">
+            <h2>Din varukorg</h2>
+            <div id="shop_bucket_container"></div>
+        </section>
+    
+        <section id="send_order">
+            <h2>Skicka din beställning</h2>
+            <label class="order_style" for="order_name">Namn:</label>
+            <input type="text" placeholder="Namn" id="order_name"><br>
+            <label class="order_style" for="order_email">Epost</label>
+            <input type="email" placeholder="Epost" id="order_email"><br>
+            <label class="order_style" for="order_adress">Adress</label>
+            <input type="text" placeholder="Adress" id="order_adress">   <br> 
+            <label class="order_style" for="order_postnr">Postnummer</label>
+            <input type="number" placeholder="5 siffror" id="order_postnr"><br>
+            <label class="order_style" for="order_city">Stad</label>
+            <input type="text" placeholder="Stad" id="order_city"> <br>
+        
+            <span>Betalsätt</span>
+            <input type="radio" name="pay" id="pay_card" value="">
+            <span class="order_style">Kort</span>
+            <input type="radio" name="pay" id="pay_invoice" value="">
+            <span class="order_style">Faktura</span><br>
+        
+            <button type="button" id="stop_order_btn">Avbryt</button>
+            <button type="button" id="order_btn">Skicka din beställning</button>
+        </section>
+    </main>
+
+    <footer>
+        <a href="">Om oss</a>
+        <a href="">Kontakt</a>
+        <a href="">Länkar</a>
+        <span>copyright by TessansAB</span>
+    </footer>
+
+</body>
+</html>
