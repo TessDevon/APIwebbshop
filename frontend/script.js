@@ -90,8 +90,67 @@ loginUserBtn.addEventListener("click", (event) => {
 /*-----------------------------------------------------------------------------
 ------------ Visa varorna utifrån kattegori ---------------------------------
 ----------------------------------------------------------------------------*/
-//Namn, pris och bild ska loopas ut. 
 
+
+//Lägga in eventlistner på mina buttons. Dessa ska trigga en get till anropet av en specifik kategori. 
+
+
+
+
+//Namn, pris och bild ska loopas ut. 
+function printProducts(products) {
+
+    const productContainer = document.getElementById("product_container");
+
+
+
+    products.map(product => {
+        
+        const productArticle = document.createElement("article");
+        productArticle.class = "product";
+        productArticle.id = "product";
+        productContainer.appendChild(productArticle);  
+
+        const productImg = document.createElement("img");
+        productImg.class = "product_img";
+        productImg.id = "product_img";
+        productArticle.appendChild(productImg);
+
+        const productName = document.createElement("h4");
+        productName.class = "product_name";
+        productName.id = "product_name";
+        productArticle.appendChild(productName);
+
+        const productPrice = document.createElement("span");
+        productPrice.class = "product_price";
+        productPrice.id = "product_price";
+        productArticle.appendChild(productPrice);
+
+
+        const byProductBtn = document.createElement("button");
+        byProductBtn.id = product.id
+        byProductBtn.innerHTML = "Köp"
+        productArticle.appendChild(byProductBtn);
+
+        const numberOfGoods = document.createElement("INPUT"); 
+        numberOfGoods.setAttribute("type", "number");
+        numberOfGoods.className = "number_of_goods";
+        numberOfGoods.id = "number_of_goods";
+        productArticle.appendChild(numberOfGoods);
+
+        const inputNewTitle = document.createElement("INPUT");
+        inputNewTitle.
+        inputNewTitle.
+        inputNewTitle.
+        inputNewTitle.
+        newBookForm.appendChild(inputNewTitle);
+
+        byProductBtn.addEventListener("click", (event) => {
+            //root.innerHTML="";
+            //showBook(event);
+        }); 
+    });
+};
 
 
 /*----------------------------------------------------------------------------
