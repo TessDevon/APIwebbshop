@@ -1,0 +1,98 @@
+/*------------------------------------------------------------------------
+------------- Header -----------------------------------------------------
+------------------------------------------------------------------------*/
+
+header{
+    width: 100%;
+    height: 250px;
+    margin: 0px;
+
+}
+
+h1{
+    margin: 0px;
+    padding-top: 25px;
+    padding-left: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 8rem;
+    text-shadow: 5px 5px 30px #ffffff;
+}
+
+/*-------------------------------------------------------------------------
+--------------- Body ------------------------------------------------------
+-------------------------------------------------------------------------*/
+
+body{
+background-color: rgb(205, 180, 91);
+background-image: url("src/img/HeaderFabrik.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+.user_divs, #pruducts, #shop_bucket_section, #send_order{
+    background-color: rgb(238, 181, 177);
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+
+}
+
+h2{
+    padding-left: 15px;
+}
+
+#product_header{
+    font-size: 4rem;
+}
+
+.order_style{
+    padding: 10px;
+}
+
+input{
+    font-size: 1.5rem;
+    margin: 15px;
+}
+
+#stop_order_btn{
+    background-color: pink;
+    padding: 5px;
+    margin: 10px;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: flex;
+    position: relative;
+    left:80rem;
+    top:3.7rem
+}
+
+#order_btn{
+    background-color: rgb(212, 234, 178);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: flex;
+    position: relative;
+    left: 90rem;
+
+}
+
+/*-------------------------------------------------------------------------
+------------ Footer ------------------------------------------------------
+-------------------------------------------------------------------------*/
+
+footer{
+    padding-left: 15px;
+    padding-top: 25px;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+}
+
+a{
+    color: white;
+}
