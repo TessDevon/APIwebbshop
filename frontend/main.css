@@ -6,7 +6,6 @@ header{
     width: 100%;
     height: 250px;
     margin: 0px;
-
 }
 
 h1{
@@ -30,13 +29,12 @@ background-repeat: no-repeat;
 font-family: Arial, Helvetica, sans-serif;
 }
 
-.user_divs, #pruducts, #shop_bucket_section, #send_order, #shop_basket_section{
+.user_divs, #pruducts, #shop_bucket_section, #send_order, #shop_basket_section, #user-order_container{
     background-color: rgb(233, 212, 179);
     padding: 15px;
     margin-top: 15px;
     border-radius: 5px;
     font-size: 1.5rem;
-
 }
 
 h2{
@@ -62,7 +60,6 @@ input{
     display: flex; 
     position: relative;  
     flex-direction: column;
-   
 }
 
 #product_header, #sort_div{
@@ -71,9 +68,12 @@ input{
     left:35%
 }
 
+.orderh1{
+    display: flex;
+    justify-content: center;
+}
 
-
-#product_article, #basket_product_article{
+#product_article, #basket_product_article, #order_article{
     background-color: white;
     font-size: 1.5rem;
     display: block;
@@ -93,7 +93,6 @@ button{
     margin-right: 15px;
     border-radius: 5px;
     font-size: 1.5rem;
-
 }
 
 #stop_order_btn{
@@ -118,7 +117,6 @@ button{
     display: flex;
     position: relative;
     left: 90rem;
-
 }
 
 /*-------------------------------------------------------------------------
@@ -128,12 +126,26 @@ button{
 footer{
     padding-left: 15px;
     padding-top: 25px;
-    color: white;
+    color: black;
     display: flex;
     justify-content: space-evenly;
     font-size: 1.5rem;
 }
 
 a{
-    color: white;
+    color: black;
+}
+
+body{
+    position: relative;
+}
+
+#user-order_container{
+    visibility: hidden;
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 96vw;
+    height: 100%;
+    background-color: rgb(233, 212, 179);
 }
