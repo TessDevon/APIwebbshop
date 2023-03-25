@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Tessans textil</title>
     <script src="script.js" defer></script>
     <link href="main.css" rel="stylesheet" />
-
 </head>
 
 <body> 
@@ -39,7 +37,6 @@
                 <button type="button" id="show_Order_btn">Visa gjorda ordrar</button>
             </div>
         </section>
-    
         <section id="pruducts">
             <h2 id="product_header">Våra produkter</h2>
             <div id="sort_div">
@@ -52,8 +49,9 @@
         <section id="shop_basket_section">
             <h2>Din varukorg</h2>
             <div id="shop_basket_container"></div>
+            <button type="button" id="order_btn">Skicka din beställning</button>
         </section>
-    
+        <!--
         <section id="send_order">
             <h2>Skicka din beställning</h2>
             <label class="order_style" for="order_name">Namn</label>
@@ -66,18 +64,18 @@
             <input type="number" placeholder="5 siffror" id="order_postnr"><br>
             <label class="order_style" for="order_city">Stad</label>
             <input type="text" placeholder="Stad" id="order_city"> <br>
-        
             <span>Betalsätt</span>
             <input type="radio" name="pay" id="pay_card" value="">
             <span class="order_style">Kort</span>
             <input type="radio" name="pay" id="pay_invoice" value="">
             <span class="order_style">Faktura</span><br>
-        
             <button type="button" id="stop_order_btn">Avbryt</button>
-            <button type="button" id="order_btn">Skicka din beställning</button>
-        </section>
+        </section> -->
+        <div id="user-order_container">
+            <h1 class="orderh1">Dina ordrar</h1>
+            <button id="close_order_view">Stäng</button>
+        </div>
     </main>
-
     <footer>
         <a href="">Om oss</a>
         <a href="">Kontakt</a>
