@@ -52,11 +52,7 @@ router.post('/login', function(req, res, next) {
       const foundUser = results[i];
       console.log(CryptoJS.SHA3(password).toString())
       if(CryptoJS.SHA3(password).toString() === foundUser.password) {
-        const cookieObject = {id: foundUser.id}
-        const cookieData = JSON.stringify(cookieObject)
-        const cookiePayload = CryptoJS.AES.encrypt(cookieData, "my key").toString()
-        res.cookie(`Usercookie`, cookiePayload);
-        res.json("ok")
+        res.json({id:foundUser._id})
         return;
       }
     }
