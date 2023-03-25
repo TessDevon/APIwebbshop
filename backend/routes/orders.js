@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const CryptoJS = require("crypto-js");
 const OrderModel = require('../models/order_models');
+const ProductModel = require('../models/product_models');
 
 
 // HÄMTA ALLA ORDERS, KEY MÅSTE ANGES FÖR ATT FÅ TILLGÅNG TILL ORDERS, FEL KEY // SKALL MISSLYCKAS
@@ -23,14 +24,26 @@ router.get('/all/:API_token', async(req, res) => {
 // SKAPA ORDER FÖR EN SPECIFIK USER
 router.post('/add', async (req, res) => {
     try {
-      const order = new OrderModel(req.body)
+      const order = new OrderModel(req.body)  
       await order.save()
       res.status(201).json(order)
+
+      const products = order.products 
+
+      products.forEach(async ({productId, quantity}) => {
+        const product = await ProductModel.findById({_id:productId});
+        if (product) {
+          product.lager -= quantity; 
+          await product.save();
+        }
+      })
     } catch (error) {
       console.log(error)
       res.status(400)
     }
   });
+
+
 
 
 // HÄMTA ORDERS FÖR EN USER // SKALL MISSLYCKAS = INGEN KEY  // SVARA MED 401 // SKALL LYCKAS = KEY
