@@ -12,7 +12,6 @@ const newPassword = document.getElementById("new_password");
 
 newUserBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    //console.log("Called Handler");
     let user = {name: newName.value, email: newEmail.value, password:newPassword.value};
     console.log(user);
 
@@ -64,21 +63,15 @@ loginUserBtn.addEventListener("click", (event) => {
             return res.json()
         })
     .then(data => {
-        console.log(data);
         userId = data.id;
         token = data.token;
         localStorage.setItem("userIdLocalStorage", JSON.stringify({id:userId, token:token}))
-        console.log(userId)
-        
-        //const serverMassage = document.getElementById("serverMassage");
         const okMessage = document.createTextNode("Välkommen till vår webshop!");
         loginMessage.style.color = "green";
         loginMessage.appendChild(okMessage);
     })  
     .catch((error) => {
         console.error("Error:", error);
-        //const loginMassage = document.getElementById("login_massage");
-
         const errorMassege = document.createTextNode("Error! Fel användarnamn eller lösenord!");
         loginMessage.style.color = "red";
         loginMessage.appendChild(errorMassege);
@@ -105,7 +98,6 @@ function findAllProduct () {
         headers: {
             "Content-Type": "application/json",
         },
-        //body:JSON.stringify(sendUserData)
     })
     .then(res => {
         if(!res.ok) {
@@ -114,18 +106,13 @@ function findAllProduct () {
             return res.json()
         })
     .then(data => {
-        console.log(data);
         productContainer.innerHTML="";
         printProducts(data);
     })
     .catch((error) => {
         console.error("Error:", error);
-        //const loginMassage = document.getElementById("login_massage");
-
-        //const errorMassege = document.createTextNode("Error! Fel användarnamn eller lösenord!");
         loginMessage.style.color = "red";
         loginMessage.appendChild(errorMassege);
-
     });
 }
 findAllProduct();
@@ -153,7 +140,6 @@ function laodCategories () {
             categoryRadio.setAttribute("type", "radio");
             categoryRadio.setAttribute("name","sort");
             categoryRadio.id = category._id;
-            console.log(category)
             sortDiv.appendChild(categoryRadio);
 
             const categoryText = document.createElement("span");
@@ -175,7 +161,6 @@ laodCategories();
 function findAndWhriteCategory (event) {
 
     const selectedCategory = event.target.id
-    console.log(selectedCategory);
 
     fetch("http://localhost:3000/api/products/category/" + selectedCategory, {
         method:"GET",
@@ -190,7 +175,6 @@ function findAndWhriteCategory (event) {
             return res.json()
         })
     .then(data => {
-        console.log(data);
         productContainer.innerHTML="";
         printProducts(data)
     })
@@ -198,7 +182,6 @@ function findAndWhriteCategory (event) {
         console.error("Error:", error);
         loginMessage.style.color = "red";
         loginMessage.appendChild(errorMassege);
-
     });
 }
 
@@ -245,7 +228,6 @@ function printProducts(products) {
         productArticle.appendChild(buyProductBtn);
 
         buyProductBtn.addEventListener("click", addProductToBasket)
-
     });
 };
 
@@ -417,9 +399,7 @@ const showOrders = document.getElementById("user-order_container");
 
 function whriteOrders(orders) {
     showOrders.style.visibility = "visible";
-    const hideMain = document.getElementsByName("main");
     const userOrderContainer = document.getElementById("user-order_container");
-    console.log(orders);
 
     orders.forEach(order => {
         const orderArticle = document.createElement("article");

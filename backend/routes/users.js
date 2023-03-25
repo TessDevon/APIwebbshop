@@ -16,6 +16,7 @@ router.get('/', async(req, res) => {
   }
 });
 
+
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
 router.post('/', async(req, res) => {
   try {
@@ -27,6 +28,7 @@ router.post('/', async(req, res) => {
     res.status(400)
   }
 });
+
 
 // SKAPA USER
 router.post('/add', async (req, res) => {
@@ -41,6 +43,7 @@ router.post('/add', async (req, res) => {
     res.status(400)
   }
 });
+
 
 // LOGGA IN USER MED EMAIL // VID FEL LÖSENORD SÅ SKALL SVARA MED 401
 router.post('/login', function(req, res, next) {

@@ -44,8 +44,6 @@ router.post('/add', async (req, res) => {
   });
 
 
-
-
 // HÄMTA ORDERS FÖR EN USER // SKALL MISSLYCKAS = INGEN KEY  // SVARA MED 401 // SKALL LYCKAS = KEY
 router.post('/user', async(req, res) => {
     try { 
