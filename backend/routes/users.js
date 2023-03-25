@@ -52,7 +52,7 @@ router.post('/login', function(req, res, next) {
       const foundUser = results[i];
       console.log(CryptoJS.SHA3(password).toString())
       if(CryptoJS.SHA3(password).toString() === foundUser.password) {
-        res.json({id:foundUser._id})
+        res.json({id:foundUser._id, token:process.env.TOKEN_KEY})
         return;
       }
     }
