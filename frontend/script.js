@@ -1,4 +1,5 @@
 
+
 /*------------------------------------------------------------------------------------------------
 --------------------------- Skapa ny användare ---------------------------------------------------
 ------------------------------------------------------------------------------------------------*/ 
@@ -65,7 +66,8 @@ loginUserBtn.addEventListener("click", (event) => {
     .then(data => {
         console.log(data);
         userId = data.id;
-        localStorage.setItem("userIdLocalStorage", JSON.stringify({id:userId}))
+        token = data.token;
+        localStorage.setItem("userIdLocalStorage", JSON.stringify({id:userId, token:token}))
         console.log(userId)
         
         //const serverMassage = document.getElementById("serverMassage");
@@ -380,7 +382,11 @@ function sendOrder() {
 ----------------------------------- Visa användarens ordrarna på ny sida ---------------------------------------
 --------------------------------------------------------------------------------------------------------------*/
 
-function fetchOrders (event) {
+const showOrderBtn = document.getElementById("show_Order_btn");
+
+showOrderBtn.addEventListener("click", getUserOrders)
+
+function getUserOrders (event) {
 
     let userIdLocalStorage = JSON.parse(localStorage.getItem("userIdLocalStorage")) || {id:""};
 
@@ -390,7 +396,7 @@ function fetchOrders (event) {
             "Content-Type": "application/json",
         },
 
-        body: JSON.stringify({user: userIdLocalStorage.id})
+        body: JSON.stringify({user: userIdLocalStorage.id, token:userIdLocalStorage.token})
     })
     .then(res => {
         if(!res.ok) {
@@ -407,48 +413,53 @@ function fetchOrders (event) {
     });
 };
 
+const showOrders = document.getElementById("user-order_container");
 
-    function whriteOrders(orders) {
+function whriteOrders(orders) {
+    showOrders.style.visibility = "visible";
+    const hideMain = document.getElementsByName("main");
     const userOrderContainer = document.getElementById("user-order_container");
-    console.log(data);
+    console.log(orders);
 
-    orders.map(order => {
+    orders.forEach(order => {
         const orderArticle = document.createElement("article");
-        orderArticle.class = "order_article ";
+        orderArticle.class = "order_article";
         orderArticle.id = "order_article";
         userOrderContainer.appendChild(orderArticle);  
 
-        const orderNumber = document.createElement("h3");
+        const orderNumber = document.createElement("h2");
         orderNumber.class = "order_number";
         orderNumber.id = "order_number";
-        orderArticle.appendChild(productNameBasket);
-    //    productNameBasket.innerHTML = product.name;
+        orderArticle.appendChild(orderNumber);
+        orderNumber.innerHTML = order._id;
 
-        const orderProductImg = document.createElement("img");
-        orderProductImg.class = "order_product_img";
-        orderProductImg.id = "order_product-img";
-        orderProductImg.setAttribute("src", "src/img/Exempelbild.jpg");   
-        orderProductImg.setAttribute("width", "304");
-        orderProductImg.setAttribute("height", "228");
-        orderProductImg.setAttribute("alt", "Varan");
-        orderArticle.appendChild(orderProductImg);
+        order.products.forEach(product =>{
+            const orderProductImg = document.createElement("img");
+            orderProductImg.class = "order_product_img";
+            orderProductImg.id = "order_product-img";
+            orderProductImg.setAttribute("src", "src/img/Exempelbild.jpg");   
+            orderProductImg.setAttribute("width", "304");
+            orderProductImg.setAttribute("height", "228");
+            orderProductImg.setAttribute("alt", "Varan");
+            orderArticle.appendChild(orderProductImg);
 
-        const productNameOrder = document.createElement("h4");
-        productNameOrder.class = "product_name_order";
-        productNameOrder.id = "product_name_order";
-        orderArticle.appendChild(productNameOrder);
-    //    productNameBasket.innerHTML = product.name;
+            const productNameOrder = document.createElement("h4");
+            productNameOrder.class = "product_name_order";
+            productNameOrder.id = "product_name_order";
+            orderArticle.appendChild(productNameOrder);
+            productNameOrder.innerHTML = product.productId;
 
-        const productPriceInBasket = document.createElement("p");
-        productPriceInBasket.class = "product_price_basket";
-        productPriceInBasket.id = "product_price_basket";
-        orderArticle.appendChild(productPriceInBasket);
-        productPriceInBasket.innerHTML = product.price + "kr";
-
-        const numberOfGoodsBasket = document.createElement("p"); 
-        numberOfGoodsBasket.className = "number_of_goods_basket";
-        numberOfGoodsBasket.id = "number_of_goods_basket";
-        orderArticle.appendChild(numberOfGoodsBasket);
-        numberOfGoodsBasket.innerHTML = numberOfGoods + "st";
-    });   
+            const numberOfGoodsBasket = document.createElement("p"); 
+            numberOfGoodsBasket.className = "number_of_goods_basket";
+            numberOfGoodsBasket.id = "number_of_goods_basket";
+            orderArticle.appendChild(numberOfGoodsBasket);
+            numberOfGoodsBasket.innerHTML = product.quantity + "st";
+        });   
+    });
 };
+
+const closeOrderView = document.getElementById("close_order_view");
+closeOrderView.addEventListener("click", () => {
+    showOrders.style.visibility = "hidden";
+
+})
