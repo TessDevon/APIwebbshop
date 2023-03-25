@@ -19,7 +19,7 @@
         <section id="user_div_section" class="user_div_section">
             <div id="add_user_div" class="user_divs">
                 <h3>Lägg till ny användare</h3>
-                <label for="new_name">Namn:</label>
+                <label for="new_name">Namn</label>
                 <input type="text" placeholder="Namn" id="new_name">
                 <label for="new_email">Epost</label>
                 <input type="email" placeholder="Epost" id="new_email">
@@ -36,32 +36,27 @@
                 <input type="text" placeholder="Lösenord" id="login_password">
                 <button type="button" id="login_user_btn">Logga in</button>
                 <span id="login_message"></span>
+                <button type="button" id="show_Order_btn">Visa gjorda ordrar</button>
             </div>
         </section>
     
         <section id="pruducts">
             <h2 id="product_header">Våra produkter</h2>
             <div id="sort_div">
-                <input type="radio" name="sort" id="all_products" value="Alla produkter">
+                <input checked type="radio" name="sort" id="all_products" value="Alla produkter">
                 <span>Alla</span>
-                <input type="radio" name="sort" id="sort_kitchen" value="Kökstextil_ID">
-                <span>Kök</span>
-                <input type="radio" name="sort" id="sort_bathroom" value="Badrumstextil_ID">
-                <span>Badrum</span>
-                <input type="radio" name="sort" id="sort_bedroom" value="Sovrumstextil_ID">
-                <span>Sovrum</span>
             </div>
             <div id="product_container"></div>
         </section>
 
-        <section id="shop_bucket_section">
+        <section id="shop_basket_section">
             <h2>Din varukorg</h2>
-            <div id="shop_bucket_container"></div>
+            <div id="shop_basket_container"></div>
         </section>
     
         <section id="send_order">
             <h2>Skicka din beställning</h2>
-            <label class="order_style" for="order_name">Namn:</label>
+            <label class="order_style" for="order_name">Namn</label>
             <input type="text" placeholder="Namn" id="order_name"><br>
             <label class="order_style" for="order_email">Epost</label>
             <input type="email" placeholder="Epost" id="order_email"><br>
